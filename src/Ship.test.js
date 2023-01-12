@@ -11,6 +11,15 @@ describe('ships', () => {
     expect(ship).toBeDefined
   });
 
+  test('Ship has correct name (2 length)', () => {
+    expect(ship.getName()).toBe('destroyer')
+  });
+
+  test('Ship has correct name (3 length)', () => {
+    ship = shipFactory(3)
+    expect(ship.getName()).toBe('submarine')
+  });
+
   test('Ship has length', () => {
     expect(ship.length).toBe(2)
   });
