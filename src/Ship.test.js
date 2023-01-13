@@ -24,7 +24,7 @@ describe('ships', () => {
     expect(ship.length).toBe(2)
   });
 
-  test('Ship has sunk', () => {
+  test('Ship is not sunk', () => {
     expect(ship.isSunk()).toBe(false)
   });
 
@@ -44,4 +44,11 @@ describe('ships', () => {
 
     expect(ship.isSunk()).toBe(true)
   });
+
+  test('Ship isnt sunk if hits < length', () => {
+    ship.hit()
+
+    expect(ship.isSunk()).toBe(false)
+  });
+
 })

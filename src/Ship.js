@@ -35,7 +35,7 @@ const shipFactory = (length) => {
   }
 
   const isSunk = () => {
-    if ((length = hits)) {
+    if ((length === hitsCount())) {
       sunk = true;
     }
 
