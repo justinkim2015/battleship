@@ -4,7 +4,7 @@ const shipFactory = (length) => {
   let name
   
   // Setter
-  const hit = () => {
+  const setHit = () => {
     hits += 1;
   };
 
@@ -43,7 +43,7 @@ const shipFactory = (length) => {
   };
 
   setName()
-  return { length, isSunk, hitsCount, hit, getName };
+  return { length, isSunk, hitsCount, setHit, getName };
 };
 
 export default shipFactory;

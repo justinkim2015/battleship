@@ -1,7 +1,8 @@
 const gameboard = (() => {  
   let misses = []
+  let hits = []
   let shipCount = 5
-
+  
   const makeGrid = () => {
     const length = 10
     const depth = 10
@@ -18,12 +19,14 @@ const gameboard = (() => {
 
   // Getters
   const getMisses = () => { return misses }
+  const getHits = () => { return hits }
   const getGrid = () => { return grid }
   const getShipCount = () => { return shipCount }
 
   // Setters
   const setMisses = (x, y) => { misses.push([x, y]) }
-  const setShipCount = () => { shipCount =- 1 }
+  const setHitRecord = (x, y) => { hits.push([x, y]) }
+  const setShipCount = () => { shipCount -= 1 }
 
   const placeShip = (ship, x, y, orientation) => {
     let length = ship.length
@@ -60,14 +63,28 @@ const gameboard = (() => {
     if(grid[x][y] === undefined) {
       setMisses(x, y)
     } else {
-      grid[x][y].hit()
+      grid[x][y].setHit()
+      setHitRecord(x, y)
+      if(grid[x][y].isSunk() === true ) { setShipCount() }
     }
   }
 
   const isAllSunk = () => {
-    return true
+    if(getShipCount() === 0) {
+      return true
+    } else {
+      return false
+    }
   }
-  return { getGrid, getMisses, getShipCount, placeShip, recieveAttack, isAllSunk } 
+
+  const reset = () => {
+    shipCount = 5
+    grid = makeGrid()
+    misses = []
+    hits = []
+  }
+
+  return { getGrid, getMisses, getShipCount, placeShip, recieveAttack, isAllSunk, reset, getHits } 
 })();
 
 export default gameboard

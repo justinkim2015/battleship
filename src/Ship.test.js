@@ -33,20 +33,20 @@ describe('ships', () => {
   });
 
   test('Ship can be hit', () => {
-    ship.hit()
+    ship.setHit()
     expect(ship.hitsCount()).toBe(1)
   });
 
   test('Ship is sunk if hits = length', () => {
     for(let i=0; i<ship.length; i++) {
-      ship.hit()
+      ship.setHit()
     }
 
     expect(ship.isSunk()).toBe(true)
   });
 
   test('Ship isnt sunk if hits < length', () => {
-    ship.hit()
+    ship.setHit()
 
     expect(ship.isSunk()).toBe(false)
   });
