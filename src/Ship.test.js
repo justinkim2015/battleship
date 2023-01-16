@@ -1,54 +1,53 @@
-import shipFactory from './Ship.js';
+import shipFactory from "./Ship.js";
 
-describe('ships', () => {
-  let ship
+describe("ships", () => {
+  let ship;
 
-  beforeEach(()=> {
-    ship = shipFactory(2)
-  });
-  
-  test('Ship Exists', () => {
-    expect(ship).toBeDefined
+  beforeEach(() => {
+    ship = shipFactory(2);
   });
 
-  test('Ship has correct name (2 length)', () => {
-    expect(ship.getName()).toBe('destroyer')
+  test("Ship Exists", () => {
+    expect(ship).toBeDefined;
   });
 
-  test('Ship has correct name (3 length)', () => {
-    ship = shipFactory(3)
-    expect(ship.getName()).toBe('submarine')
+  test("Ship has correct name (2 length)", () => {
+    expect(ship.getName()).toBe("destroyer");
   });
 
-  test('Ship has length', () => {
-    expect(ship.length).toBe(2)
+  test("Ship has correct name (3 length)", () => {
+    ship = shipFactory(3);
+    expect(ship.getName()).toBe("submarine");
   });
 
-  test('Ship is not sunk', () => {
-    expect(ship.isSunk()).toBe(false)
+  test("Ship has length", () => {
+    expect(ship.length).toBe(2);
   });
 
-  test('Ship has number of hits', () => {
-    expect(ship.hitsCount()).toBe(0)
+  test("Ship is not sunk", () => {
+    expect(ship.isSunk()).toBe(false);
   });
 
-  test('Ship can be hit', () => {
-    ship.setHit()
-    expect(ship.hitsCount()).toBe(1)
+  test("Ship has number of hits", () => {
+    expect(ship.hitsCount()).toBe(0);
   });
 
-  test('Ship is sunk if hits = length', () => {
-    for(let i=0; i<ship.length; i++) {
-      ship.setHit()
+  test("Ship can be hit", () => {
+    ship.setHit();
+    expect(ship.hitsCount()).toBe(1);
+  });
+
+  test("Ship is sunk if hits = length", () => {
+    for (let i = 0; i < ship.length; i++) {
+      ship.setHit();
     }
 
-    expect(ship.isSunk()).toBe(true)
+    expect(ship.isSunk()).toBe(true);
   });
 
-  test('Ship isnt sunk if hits < length', () => {
-    ship.setHit()
+  test("Ship isnt sunk if hits < length", () => {
+    ship.setHit();
 
-    expect(ship.isSunk()).toBe(false)
+    expect(ship.isSunk()).toBe(false);
   });
-
-})
+});

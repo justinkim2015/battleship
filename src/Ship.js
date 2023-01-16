@@ -1,8 +1,8 @@
 const shipFactory = (length) => {
   let sunk = false;
   let hits = 0;
-  let name
-  
+  let name;
+
   // Setter
   const setHit = () => {
     hits += 1;
@@ -11,19 +11,19 @@ const shipFactory = (length) => {
   const setName = () => {
     switch (length) {
       case 2:
-        name = 'destroyer';
+        name = "destroyer";
         break;
       case 3:
-        name = 'submarine';
+        name = "submarine";
         break;
       case 4:
-        name = 'battleship';
+        name = "battleship";
         break;
       case 5:
-        name = 'carrier';
+        name = "carrier";
         break;
     }
-  }
+  };
 
   // Getter
   const hitsCount = () => {
@@ -31,18 +31,18 @@ const shipFactory = (length) => {
   };
 
   const getName = () => {
-    return name
-  }
+    return name;
+  };
 
   const isSunk = () => {
-    if ((length === hitsCount())) {
+    if (length === hitsCount()) {
       sunk = true;
     }
 
     return sunk;
   };
 
-  setName()
+  setName();
   return { length, isSunk, hitsCount, setHit, getName };
 };
 

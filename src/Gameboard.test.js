@@ -1,30 +1,29 @@
 import gameboard from "./Gameboard.js";
 import shipFactory from "./Ship.js";
-import Ship from "./Ship.js";
 
-describe('create board', ()=> {
+describe("create board", () => {
   let board;
 
   beforeEach(() => {
     board = gameboard.getGrid();
   });
-  
+
   test("gameboard exists", () => {
     expect(gameboard).toBeDefined;
   });
-  
+
   test("has an array of length 10", () => {
     expect(board.length).toBe(10);
   });
-  
+
   test("has a depth of length 10", () => {
     expect(board[0][9]).toBe(undefined);
-  });  
-})
+  });
+});
 
 describe("place ships", () => {
   let ship;
-  let board; 
+  let board;
 
   beforeEach(() => {
     board = gameboard.getGrid();
@@ -71,22 +70,22 @@ describe("Recieves attacks", () => {
   let ship;
 
   beforeEach(() => {
-    gameboard.reset()
+    gameboard.reset();
     ship = shipFactory(3);
   });
 
-  test ('Placed ship recieves attack', ()=> {
-    gameboard.placeShip(ship, 1, 2, 'horizontal')
-    gameboard.recieveAttack(1, 2)
-    expect(ship.hitsCount()).toBe(1)
-  })
+  test("Placed ship recieves attack", () => {
+    gameboard.placeShip(ship, 1, 2, "horizontal");
+    gameboard.recieveAttack(1, 2);
+    expect(ship.hitsCount()).toBe(1);
+  });
 
-  test ('Placed ship 1 hit 1 miss', ()=> {
-    gameboard.placeShip(ship, 1, 2, 'horizontal')
-    gameboard.recieveAttack(1, 2)
-    gameboard.recieveAttack(1, 1)
-    expect(ship.hitsCount()).toBe(1)
-  })
+  test("Placed ship 1 hit 1 miss", () => {
+    gameboard.placeShip(ship, 1, 2, "horizontal");
+    gameboard.recieveAttack(1, 2);
+    gameboard.recieveAttack(1, 1);
+    expect(ship.hitsCount()).toBe(1);
+  });
 
   test("board records misses", () => {
     gameboard.recieveAttack(9, 9);
@@ -94,7 +93,7 @@ describe("Recieves attacks", () => {
   });
 
   test("board records hits", () => {
-    gameboard.placeShip(ship, 4, 4, 'horizontal')
+    gameboard.placeShip(ship, 4, 4, "horizontal");
     gameboard.recieveAttack(4, 4);
     expect(gameboard.getHits()).toStrictEqual([[4, 4]]);
   });
@@ -107,70 +106,67 @@ describe("All ships sunk", () => {
     ship = shipFactory(2);
   });
 
+  test("Returns remaining ship count", () => {
+    expect(gameboard.getShipCount()).toBe(5);
+  });
 
-  test ('Returns remaining ship count', ()=> {
-    expect(gameboard.getShipCount()).toBe(5)
-  })
-
-  test ('Returns remaining ship count if ship is sunk', ()=> {
-    gameboard.placeShip(ship, 1, 1, 'horizontal')
-    gameboard.recieveAttack(1, 1)
-    gameboard.recieveAttack(2, 1)
-    expect(gameboard.getShipCount()).toBe(4)
-  })
+  test("Returns remaining ship count if ship is sunk", () => {
+    gameboard.placeShip(ship, 1, 1, "horizontal");
+    gameboard.recieveAttack(1, 1);
+    gameboard.recieveAttack(2, 1);
+    expect(gameboard.getShipCount()).toBe(4);
+  });
 });
 
-
-describe('all ships sunk?', () => {
+describe("all ships sunk?", () => {
   let ship;
 
   beforeEach(() => {
-    gameboard.reset()
+    gameboard.reset();
     ship = shipFactory(3);
   });
 
-  test ('Returns false when all ships arent sunk', ()=> {
-    expect(gameboard.isAllSunk()).toBe(false)
-  })
-  
-  test ('Returns true when all ships are sunk', ()=> {
-    for(let i=0; i<5; i++) {
-      gameboard.placeShip(shipFactory(1), i, 1, 'horizontal')
-      gameboard.recieveAttack(i, 1)
+  test("Returns false when all ships arent sunk", () => {
+    expect(gameboard.isAllSunk()).toBe(false);
+  });
+
+  test("Returns true when all ships are sunk", () => {
+    for (let i = 0; i < 5; i++) {
+      gameboard.placeShip(shipFactory(1), i, 1, "horizontal");
+      gameboard.recieveAttack(i, 1);
     }
-    expect(gameboard.isAllSunk()).toBe(true)
-  })
-})
+    expect(gameboard.isAllSunk()).toBe(true);
+  });
+});
 
-
-describe('resets board', () => {
-  let ship
+describe("resets board", () => {
+  let ship;
   beforeEach(() => {
     ship = shipFactory(3);
-    gameboard.placeShip(ship, 1, 1, 'horizontal' ) // places ship
-    gameboard.recieveAttack(3, 2) // misses attack
-    gameboard.recieveAttack(1, 1) // hits 
-    gameboard.reset()
+    gameboard.placeShip(ship, 1, 1, "horizontal"); // places ship
+    gameboard.recieveAttack(3, 2); // misses attack
+    gameboard.recieveAttack(1, 1); // hits
+    gameboard.reset();
   });
 
-  test ('Resets ship count', ()=> {
-    expect(gameboard.getShipCount()).toBe(5)
-  })
-  
-  test ('Resets misses', ()=> {
-    expect(gameboard.getMisses()).toStrictEqual([])
-  })
-  
-  test ('Resets hits', ()=> {
-    expect(gameboard.getHits()).toStrictEqual([])
-  })
+  test("Resets ship count", () => {
+    expect(gameboard.getShipCount()).toBe(5);
+  });
 
-  test ('Clears board', ()=> {
-    let array = []
-    for(let i=0; i<10; i++){
-      array.push(new Array(10))
+  test("Resets misses", () => {
+    expect(gameboard.getMisses()).toStrictEqual([]);
+  });
+
+  test("Resets hits", () => {
+    expect(gameboard.getHits()).toStrictEqual([]);
+  });
+
+  test("Clears board", () => {
+    let array = [];
+    for (let i = 0; i < 10; i++) {
+      array.push(new Array(10));
     }
-  
-    expect(gameboard.getGrid()).toStrictEqual(array)
-  })  
-})
+
+    expect(gameboard.getGrid()).toStrictEqual(array);
+  });
+});
