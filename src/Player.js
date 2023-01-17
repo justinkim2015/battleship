@@ -1,11 +1,13 @@
 const playerFactory = (playerNum, type) => {
-  const computerGuess = () => {
-    if(type === 'computer') {
-      return [4, 4]
-    }
-  }
+  const takeTurn = () => {
+  };
 
-  return { playerNum, type, computerGuess };
+  const guess = () => {
+    return [Math.floor(Math.random() * 10), 
+            Math.floor(Math.random() * 10)];
+  };
+
+  return { playerNum, type, takeTurn, guess };
 };
 
 export default playerFactory;
