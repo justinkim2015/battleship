@@ -29,7 +29,7 @@ test("Knows what player number it is", () => {
 });
 
 test("Only guesses if player is a computer", () => {
-  expect(player1.guess()).toBe(undefined)
+  expect(player1.computerGuess()).toBe(undefined)
 });
 
 // test("computer can guess random coords", () => {

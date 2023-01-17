@@ -1,11 +1,11 @@
 const playerFactory = (playerNum, type) => {
-  const guess = () => {
+  const computerGuess = () => {
     if(type === 'computer') {
       return [4, 4]
     }
   }
 
-  return { playerNum, type, guess };
+  return { playerNum, type, computerGuess };
 };
 
 export default playerFactory;
