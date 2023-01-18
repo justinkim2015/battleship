@@ -1,15 +1,15 @@
 import gameboard from "./Gameboard";
 import playerFactory from "./Player";
-import shipFactory from './Ship'
+import shipFactory from "./Ship";
 
 let player1;
 let player2;
-let board 
-let ship 
+let board;
+let ship;
 
 beforeEach(() => {
-  ship = shipFactory(3)
-  board = gameboard.getGrid()
+  ship = shipFactory(3);
+  board = gameboard.getGrid();
   player1 = playerFactory(1, "human");
   player2 = playerFactory(2, "computer");
 });
@@ -42,23 +42,32 @@ test("Knows what player number it is", () => {
 // });
 
 test("computer can guess random coords (correct length)", () => {
-  expect(player2.guess().length).toBe(2);
+  expect(player2.guess(gameboard).length).toBe(2);
 });
 
 test("computer can guess random coords (x <= 9)", () => {
-  expect(player2.guess()[0]).toBeLessThanOrEqual(9);
+  expect(player2.guess(gameboard)[0]).toBeLessThanOrEqual(9);
 });
 
 test("computer can guess random coords (y <= 9)", () => {
-  expect(player2.guess()[1]).toBeLessThanOrEqual(9);
+  expect(player2.guess(gameboard)[1]).toBeLessThanOrEqual(9);
 });
 
 test("computer can guess random coords (x >= 0)", () => {
-  expect(player2.guess()[0]).toBeGreaterThanOrEqual(0);
+  expect(player2.guess(gameboard)[0]).toBeGreaterThanOrEqual(0);
 });
 
 test("computer can guess random coords (y >= 0-9)", () => {
-  expect(player2.guess()[1]).toBeGreaterThanOrEqual(0);
+  expect(player2.guess(gameboard)[1]).toBeGreaterThanOrEqual(0);
+});
+
+// NOT QUITE WORKING YET
+test("computer doesnt guess same spot", () => {
+  gameboard.placeShip(ship, 1, 1, 'horizontal')
+  gameboard.recieveAttack(5, 5)
+  gameboard.recieveAttack(6, 6)
+  let guess = [5, 5]
+  expect(guess).not.toBe()
 });
 
 // test("computer can guess random coords", () => {

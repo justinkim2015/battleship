@@ -2,9 +2,15 @@ const playerFactory = (playerNum, type) => {
   const takeTurn = () => {
   };
 
-  const guess = () => {
-    return [Math.floor(Math.random() * 10), 
-            Math.floor(Math.random() * 10)];
+  const guess = (board) => {
+    let guess = [Math.floor(Math.random() * 10), 
+                 Math.floor(Math.random() * 10)]
+
+    if(board.getMisses().includes(guess)) {
+      guess(board)
+    } else {
+      return guess
+    }
   };
 
   return { playerNum, type, takeTurn, guess };
