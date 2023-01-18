@@ -6,8 +6,8 @@ const playerFactory = (playerNum, type) => {
     let guess = [Math.floor(Math.random() * 10), 
                  Math.floor(Math.random() * 10)]
 
-    if(board.getMisses().includes(guess)) {
-      guess(board)
+    if(board.getMisses().includes(guess) || type != 'computer' ) {
+      return false
     } else {
       return guess
     }

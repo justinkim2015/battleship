@@ -61,14 +61,17 @@ test("computer can guess random coords (y >= 0-9)", () => {
   expect(player2.guess(gameboard)[1]).toBeGreaterThanOrEqual(0);
 });
 
-// NOT QUITE WORKING YET
-test("computer doesnt guess same spot", () => {
-  gameboard.placeShip(ship, 1, 1, 'horizontal')
-  gameboard.recieveAttack(5, 5)
-  gameboard.recieveAttack(6, 6)
-  let guess = [5, 5]
-  expect(guess).not.toBe()
+test("Guess only runs if player is a computer", () => {
+  expect(player1.guess(gameboard)).toBe(false);
 });
+
+// NOT QUITE WORKING YET
+// test("computer doesnt guess same spot", () => {
+//   gameboard.placeShip(ship, 1, 1, 'horizontal')
+//   gameboard.recieveAttack(5, 5)
+//   gameboard.recieveAttack(6, 6)
+//   expect(guess).not.toBe()
+// });
 
 // test("computer can guess random coords", () => {
 //   expect(player2.guess()).toStrictEqual([5, 5]);
