@@ -1,15 +1,16 @@
 const playerFactory = (playerNum, type) => {
-  const takeTurn = () => {
-  };
+  const takeTurn = () => {};
 
   const guess = (board) => {
-    let guess = [Math.floor(Math.random() * 10), 
-                 Math.floor(Math.random() * 10)]
+    let guess = [
+      Math.floor(Math.random() * 10),
+      Math.floor(Math.random() * 10),
+    ];
 
-    if(board.getMisses().includes(guess) || type != 'computer' ) {
-      return false
+    if (board.isAttacked(guess) || type != "computer") {
+      return false;
     } else {
-      return guess
+      return guess;
     }
   };
 

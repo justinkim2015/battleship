@@ -170,3 +170,14 @@ describe("resets board", () => {
     expect(gameboard.getGrid()).toStrictEqual(array);
   });
 });
+
+test("Checks if coordinates were already attacked (not attacked)", () => {
+  let target = [1, 1]
+  expect(gameboard.isAttacked(target)).toBe(false);
+});
+
+test("Checks if coordinates were already attacked (attacked)", () => {
+  gameboard.recieveAttack(1,1)
+  let target = [1, 1]
+  expect(gameboard.isAttacked(target)).toBe(false);
+});

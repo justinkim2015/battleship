@@ -100,6 +100,14 @@ const gameboard = (() => {
     hits = [];
   };
 
+  const isAttacked = (target) => {
+    if(getMisses().includes(target) || getHits().includes(target)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   return {
     getGrid,
     getMisses,
@@ -109,6 +117,7 @@ const gameboard = (() => {
     isAllSunk,
     reset,
     getHits,
+    isAttacked
   };
 })();
 
