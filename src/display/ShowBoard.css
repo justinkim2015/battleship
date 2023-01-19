@@ -1,0 +1,23 @@
+#boards {
+  display: flex;
+  gap: 10vw;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh;
+  grid-template-rows: 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh;
+  height: 40vh;
+  width: 40vh;
+  border: 1px black solid;
+}
+
+.box {
+  height: 4vh;
+  width: 4vh;
+  border: 1px black solid;
+}
+
+.box:hover {
+  background-color: bisque;
+}

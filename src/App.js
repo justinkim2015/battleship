@@ -1,9 +1,11 @@
 import './App.css';
+import './reset.css'
+import ShowBoard from './display/ShowBoard'
 
 function App() {
   return (
     <div>
-      hello
+      <ShowBoard />
     </div>
   );
 }

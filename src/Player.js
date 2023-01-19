@@ -1,6 +1,4 @@
 const playerFactory = (playerNum, type) => {
-  const takeTurn = () => {};
-
   const guess = (board) => {
     let guess = [
       Math.floor(Math.random() * 10),
@@ -14,7 +12,7 @@ const playerFactory = (playerNum, type) => {
     }
   };
 
-  return { playerNum, type, takeTurn, guess };
+  return { playerNum, type, guess };
 };
 
 export default playerFactory;

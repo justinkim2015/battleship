@@ -7,10 +7,8 @@ const gameboard = (() => {
     const length = 10;
     const depth = 10;
 
-    let array = [];
-    for (let i = 0; i < length; i++) {
-      array.push(new Array(depth));
-    }
+    let y = Array(depth)
+    let array = new Array(length).fill(y)
 
     return array;
   };

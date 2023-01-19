@@ -1,6 +1,6 @@
-import gameboard from "./Gameboard";
-import playerFactory from "./Player";
-import shipFactory from "./Ship";
+import gameboard from "../Gameboard";
+import playerFactory from "../Player";
+import shipFactory from "../Ship";
 
 let player1;
 let player2;
@@ -33,13 +33,6 @@ test("Knows what player number it is", () => {
 test("Knows what player number it is", () => {
   expect(player2.playerNum).toBe(2);
 });
-
-// test("Player can take a turn", () => {
-//   let input = [1, 2]
-//   gameboard.placeShip(ship, 1, 2, 'horizontal')
-//   player1.takeTurn(input);
-//   expect(board[1][2].hitsCount()).toBe(1)
-// });
 
 test("computer can guess random coords (correct length)", () => {
   expect(player2.guess(gameboard).length).toBe(2);
