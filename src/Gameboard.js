@@ -7,7 +7,7 @@ const gameboard = (() => {
     const length = 10;
     const depth = 10;
 
-    let y = Array(depth)
+    let y =  new Array(depth).fill(undefined)
     let array = new Array(length).fill(y)
 
     return array;
@@ -33,6 +33,7 @@ const gameboard = (() => {
   const setMisses = (x, y) => {
     misses.push([x, y]);
   };
+  
   const setHitRecord = (x, y) => {
     hits.push([x, y]);
   };

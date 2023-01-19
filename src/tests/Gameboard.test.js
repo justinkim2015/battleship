@@ -17,7 +17,7 @@ describe("create board", () => {
   });
 
   test("has a depth of length 10", () => {
-    expect(board[0][9]).toBe(undefined);
+    expect(board[0].length).toBe(10);
   });
 });
 
@@ -164,7 +164,7 @@ describe("resets board", () => {
   test("Clears board", () => {
     let array = [];
     for (let i = 0; i < 10; i++) {
-      array.push(new Array(10));
+      array.push(new Array(10).fill(undefined));
     }
 
     expect(gameboard.getGrid()).toStrictEqual(array);

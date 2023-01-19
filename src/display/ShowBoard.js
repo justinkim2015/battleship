@@ -2,15 +2,33 @@ import "./ShowBoard.css";
 import gameboard from '../Gameboard'
 
 const Board = () => {
+  // const drawGrid = () => {
+  //   let board = gameboard.getGrid()
+  //   gameboard.recieveAttack(3, 3)
+  //   return (
+  //     board.map((element, index) => (
+  //       <div key={index} className="box"></div>
+  //     ))
+  //   )
+  // };
+
   const drawGrid = () => {
     let board = gameboard.getGrid()
-    gameboard.recieveAttack(3, 3)
+    
     return (
-      board.map((element, index) => (
-          <div key={index} className="box"></div>
-      ))
-    )
-  };
+      <div>
+        {board.map((value, index) => {
+          return (
+            <div className='box'>
+              {value.map((value, index) => {
+                return <div className={`box ${index}`}>{value}</div>;
+              })}
+            </div>
+          );
+        })}
+      </div>
+    );  
+  }
 
   return (
     <div id='boards'>
