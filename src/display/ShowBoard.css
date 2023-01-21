@@ -4,19 +4,28 @@
 }
 
 .board {
+  display: grid;
+  grid-template-columns: repeat(10, 4vh);
+  grid-template-rows: repeat(10, 4vh);
+}
+
+.board {
   height: 40vh;
   width: 40vh;
 }
 
-.box {
+.column {
+  display: flex;
+  flex-direction: row;
+  flex: 0%;
+  /* WHY DOES THIS WORK */
+  height: 4vh;
+  width: 40vh;
+  border: 1px black solid;
+}
+
+.row {
   height: 4vh;
   width: 4vh;
   border: 1px black solid;
-  display: grid;
-  grid-template-columns: 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh;
-  grid-template-rows: 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh;
-}
-
-.box:hover {
-  background-color: bisque;
 }

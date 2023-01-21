@@ -19,9 +19,9 @@ const Board = () => {
       <div>
         {board.map((value, index) => {
           return (
-            <div className='box'>
+            <div className={`column ${index}`}>
               {value.map((value, index) => {
-                return <div className={`box ${index}`}>{value}</div>;
+                return <div className={`row ${index}`}>{value}</div>;
               })}
             </div>
           );
