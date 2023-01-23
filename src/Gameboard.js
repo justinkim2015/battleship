@@ -48,7 +48,7 @@ const gameboard = (() => {
       if (isInvalid(length, x, y) === true) {
         // overflowError()
         break;
-      } else if (orientation == "horizontal") {
+      } else if (orientation === "horizontal") {
         grid[x + i][y] = ship;
       } else {
         grid[x][y + i] = ship;

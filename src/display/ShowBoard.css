@@ -19,6 +19,7 @@
   flex-direction: row;
   flex: 0%;
   /* WHY DOES THIS WORK */
+  /* This works because the column is 10 long */
   height: 4vh;
   width: 40vh;
   border: 1px black solid;
